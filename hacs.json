@@ -1,4 +1,5 @@
 {
     "name": "GQ GMC-300 integration",
-    "render_readme": true
+    "domains": ["gmc300"],
+    "homeassistant": "0.0.1"
 }
