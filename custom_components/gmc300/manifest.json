@@ -5,4 +5,5 @@
   "dependencies": [], 
   "codeowners": ["@rpmadm"], 
   "requirements": []
+  "config_flow": true
 }
