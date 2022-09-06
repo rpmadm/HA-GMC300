@@ -1,6 +1,5 @@
 {
     "name": "GQ GMC-300 integration",
-    "domain": "gmc300",
-    "homeassistant": "2022.6.0",
+    "domains": ["gmc300"],
     "render_readme": true
 }
