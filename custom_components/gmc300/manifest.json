@@ -4,6 +4,6 @@
   "documentation": "https://github.com/rpmadm/HA-GMC300/", 
   "dependencies": [], 
   "codeowners": ["@rpmadm"], 
-  "requirements": []
+  "requirements": [],
   "config_flow": true
 }
