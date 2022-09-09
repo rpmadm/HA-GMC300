@@ -7,7 +7,7 @@
   "requirements": [],
   "config_flow": true,
   "version": "0.0.2",
-  "usb: 
+  "usb": 
      {"vid": "067b",
       "pid": "2303"
      }
