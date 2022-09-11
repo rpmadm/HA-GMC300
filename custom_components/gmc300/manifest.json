@@ -6,10 +6,5 @@
   "codeowners": ["@rpmadm"], 
   "requirements": [],
   "config_flow": true,
-  "version": "0.1.0",
-  "usb": [
-     {"vid": "067b",
-      "pid": "2303"
-     },
-  ]
+  "version": "0.1.0"
 }
