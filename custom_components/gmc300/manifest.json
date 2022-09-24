@@ -2,7 +2,7 @@
   "domain": "gmc300", 
   "name": "GQ GMC-300 integration component", 
   "documentation": "https://github.com/rpmadm/HA-GMC300/", 
-  "dependencies": [], 
+  "dependencies": ["serial"], 
   "codeowners": ["@rpmadm"], 
   "requirements": [],
   "config_flow": true,
