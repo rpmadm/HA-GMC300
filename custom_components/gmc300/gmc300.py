@@ -42,7 +42,7 @@ class GMC:
 
 
 
-    gmc_device = serial.Serial( "/dev/ttyUSB-geiger", 57600 )
+    #gmc_device = serial.Serial( "/dev/ttyUSB-geiger", 57600 )
 
     def set_verbose_level(verbose):
         global gmc_verbose
