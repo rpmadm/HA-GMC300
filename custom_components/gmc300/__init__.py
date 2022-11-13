@@ -1,10 +1,13 @@
 from __future__ import annotations
+
+import asyncio
+import logging
+
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
-import asyncio
+
 from . import gmc300
 from .const import DOMAIN
-import logging
 
 _LOGGER = logging.getLogger(__name__)
 PLATFORMS: list[str] = ["sensor", "switch"]
