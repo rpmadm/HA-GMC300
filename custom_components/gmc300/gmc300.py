@@ -31,7 +31,7 @@ m_terminate = False
 class GMC:
 #Общий класс интеграции, используется для инициализации, а так же как объект хранящий информацию обо всех устройствах интеграции
     def __init__(self, hass: HomeAssistant) -> None:
-        self._cpm 
+        global cpm
 
 
      #   def pull_data(self):
@@ -43,6 +43,9 @@ class GMC:
 
 
     #gmc_device = serial.Serial( "/dev/ttyUSB-geiger", 57600 )
+
+
+
 
     def set_verbose_level(verbose):
         global gmc_verbose
@@ -299,3 +302,6 @@ class GMC:
         return res
 
 
+    @property 
+    def get_cpm(self) -> str:
+        return self.cpm
