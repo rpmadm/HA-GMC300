@@ -31,7 +31,7 @@ m_terminate = False
 class GMC:
 #Общий класс интеграции, используется для инициализации, а так же как объект хранящий информацию обо всех устройствах интеграции
     def __init__(self, hass: HomeAssistant) -> None:
-        self.devices = []
+        self._cpm 
 
 
      #   def pull_data(self):
@@ -157,6 +157,20 @@ class GMC:
 
         return '{} V'.format(gmc_voltage)
 
+    # Перевод единиц измерения
+    def convert_cpm_to_usievert(cpm, unit, cpm_to_usievert):
+        if cpm_to_usievert is None:
+            return cpm, unit
+
+        if unit == 'CPS':
+            return cpm * cpm_to_usievert[1] / cpm_to_usievert[0] * 60, 'мкЗв/ч'
+        elif unit == 'CPM':
+            return cpm * cpm_to_usievert[1] / cpm_to_usievert[0], 'мкЗв/ч'
+        elif unit == 'CPH':
+            return cpm * cpm_to_usievert[1] / cpm_to_usievert[0] / 60, 'мкЗв/ч'
+        else:
+            return cpm, unit
+
     # Получить значение датчика радиации
     def get_cpm(cpm_to_usievert=None):
         if gmc_device is None:
@@ -181,19 +195,7 @@ class GMC:
         else:
             return '{:d} {:s}'.format(unit_value[0], unit_value[1])
 
-    # Перевод единиц измерения
-    def convert_cpm_to_usievert(cpm, unit, cpm_to_usievert):
-        if cpm_to_usievert is None:
-            return cpm, unit
 
-        if unit == 'CPS':
-            return cpm * cpm_to_usievert[1] / cpm_to_usievert[0] * 60, 'мкЗв/ч'
-        elif unit == 'CPM':
-            return cpm * cpm_to_usievert[1] / cpm_to_usievert[0], 'мкЗв/ч'
-        elif unit == 'CPH':
-            return cpm * cpm_to_usievert[1] / cpm_to_usievert[0] / 60, 'мкЗв/ч'
-        else:
-            return cpm, unit
  
 
     # Получить температуру
