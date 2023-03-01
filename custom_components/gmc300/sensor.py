@@ -1,8 +1,8 @@
-from __future__ import annotations
+#from __future__ import annotations
 
 import logging
 
-import aiohttp
+#import aiohttp
 import voluptuous as vol
 import homeassistant.helpers.config_validation as cv
 from homeassistant.components.sensor import PLATFORM_SCHEMA
