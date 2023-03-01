@@ -1,1 +1,0 @@
-DOMAIN = "gmc300"

@@ -1,41 +1,88 @@
-#from __future__ import annotations
 
-import logging
+from __future__ import annotations
 
-#import aiohttp
-import voluptuous as vol
-import homeassistant.helpers.config_validation as cv
-from homeassistant.components.sensor import PLATFORM_SCHEMA
-
+from homeassistant.components.sensor import (
+    SensorDeviceClass,
+    SensorEntity,
+    SensorStateClass,
+)
+from homeassistant.const import TEMP_CELSIUS
 from homeassistant.core import HomeAssistant
-from homeassistant.helpers.entity import Entity
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.typing import ConfigType, DiscoveryInfoType
 
+import logging
+
 import serial
-
-CONF_NAME = 'name'
-#CONF_START = 'start'
-#CONF_DESTINATION = 'destination'
-
-ICON = 'mdi:Radioactive'
-
-CONF_USB = 'usb_port'
-
-PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
-    vol.Required(CONF_USB): cv.string
-})
 
 _LOGGER = logging.getLogger(__name__)
 
-async def async_setup_platform(
-        hass, config, async_add_entities, discovery_info=None):  # pylint: disable=unused-argument
-    """Setup sensor platform."""
-    name = config['name']
-    usb_port: config['usb_port']
 
+async def async_setup_platform(
+    hass: HomeAssistant,
+    config: ConfigType,
+    async_add_entities: AddEntitiesCallback,
+    discovery_info: DiscoveryInfoType | None = None
+) -> None:
     async_add_entities(
-        [RadiationSensor(hass, name, usb_port)], True)
+        [RadiationSensor(hass)], True)
+
+
+    
+class RadiationSensor(SensorEntity):
+    """Representation of a Sensor."""
+
+    _attr_name = "Radiation Level"
+    _attr_native_unit_of_measurement = TEMP_CELSIUS
+    _attr_device_class = SensorDeviceClass.TEMPERATURE
+    _attr_state_class = SensorStateClass.MEASUREMENT
+
+    def update(self) -> None:
+        """Fetch new state data for the sensor.
+        This is the only method that should fetch new data for Home Assistant.
+        """
+        self._attr_native_value = 23
+
+
+
+
+
+
+
+
+#import aiohttp
+#import voluptuous as vol
+#import homeassistant.helpers.config_validation as cv
+#from homeassistant.components.sensor import PLATFORM_SCHEMA
+
+#from homeassistant.core import HomeAssistant
+#from homeassistant.helpers.entity import Entity
+#from homeassistant.helpers.entity_platform import AddEntitiesCallback
+#from homeassistant.helpers.typing import ConfigType, DiscoveryInfoType
+
+#CONF_NAME = 'name'
+#CONF_START = 'start'
+#CONF_DESTINATION = 'destination'
+
+#ICON = 'mdi:Radioactive'
+
+#CONF_USB = 'usb_port'
+
+#PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
+#    vol.Required(CONF_USB): cv.string
+#})
+
+#_LOGGER = logging.getLogger(__name__)
+
+#async def async_setup_platform(
+#        hass, config, async_add_entities, discovery_info=None):  # pylint: disable=unused-argument
+    """Setup sensor platform."""
+#    name = config['name']
+#    usb_port: config['usb_port']
+
+#    async_add_entities(
+#        [RadiationSensor(hass, name, usb_port)], True)
+
 
 
 class RadiationSensor(Entity):
