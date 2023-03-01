@@ -23,7 +23,7 @@ ICON = 'mdi:Radioactive'
 CONF_USB = 'usb_port'
 
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
-    vol.Required(CONF_USB): cv.string,
+    vol.Required(CONF_USB): cv.string
 })
 
 _LOGGER = logging.getLogger(__name__)
