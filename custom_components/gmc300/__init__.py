@@ -19,5 +19,8 @@ _LOGGER = logging.getLogger(__name__)
 PLATFORMS = [
     Platform.SENSOR,
     Platform.NUMBER,
+    Plarform.SWITCH,
 ]
 
+async def async_setup(hass, config):
+    hass.states.async_set("gmc300.world", "GMC-300")
