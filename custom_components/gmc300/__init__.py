@@ -12,7 +12,6 @@ import homeassistant.helpers.event as ev
 from homeassistant.helpers.dispatcher import async_dispatcher_send
 from homeassistant.helpers.entity import DeviceInfo
 from datetime import timedelta
-from .gmc_connection import GMCConnection
 #from .skykettle import SkyKettle
 
 _LOGGER = logging.getLogger(__name__)
