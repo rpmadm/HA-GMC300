@@ -40,5 +40,5 @@ class GMCSensor(SensorEntity):
     
 
     def update(self):
-        self._attr_native_value = 356
+        self._attr_native_value = self._attr_native_value + 10
 
