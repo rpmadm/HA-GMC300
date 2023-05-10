@@ -38,6 +38,6 @@ class GMCSensor(SensorEntity):
         return "GMC300"
     
 
-    async def _async_update_data(self):
+    async def _async_update(self):
         self._attr_native_value = 356
 
