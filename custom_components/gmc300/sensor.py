@@ -26,6 +26,7 @@ class GMCSensor(SensorEntity):
     _attr_native_unit_of_measurement = None
     _attr_device_class = None
     _attr_state_class = SensorStateClass.MEASUREMENT
+    _attr_native_value = 245
 
     #def __init__(self):
     #    self._is_on = False
@@ -38,6 +39,6 @@ class GMCSensor(SensorEntity):
         return "GMC300"
     
 
-    async def _async_update(self):
+    async def update(self):
         self._attr_native_value = 356
 
