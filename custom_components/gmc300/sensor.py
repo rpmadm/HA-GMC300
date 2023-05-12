@@ -1,5 +1,5 @@
 import struct
-#import serial
+import serial
 
 from __future__ import annotations
 
