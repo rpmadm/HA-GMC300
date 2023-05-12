@@ -1,3 +1,6 @@
+import struct
+import serial
+
 from __future__ import annotations
 
 from homeassistant.components.sensor import (
@@ -40,5 +43,10 @@ class GMCSensor(SensorEntity):
     
 
     def update(self):
-        self._attr_native_value = self._attr_native_value + 10
-
+    #    self._attr_native_value = self._attr_native_value + 1
+        s = serial.Serial( "/dev/ttyUSB-geiger", 57600 )
+        s.write(str.encode("<GETCPM>>"))
+        if s.inWaiting() > 0:
+           r = s.read(2)
+           r2 = struct.unpack('>H', r)[0]
+        return r2
