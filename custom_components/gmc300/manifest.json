@@ -3,7 +3,7 @@
   "name": "GQ GMC-300E integration component", 
   "documentation": "https://github.com/rpmadm/HA-GMC300/", 
   "dependencies": [],
-  "requirements": ["serial"],
+  "requirements": [],
   "codeowners": ["@rpmadm"], 
   "iot_class": "local_polling",
   "version": "0.1.0"
