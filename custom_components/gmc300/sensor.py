@@ -50,4 +50,5 @@ class GMCSensor(SensorEntity):
            r = s.read(2)
            r2 = struct.unpack('>H', r)[0]
         return r2
+    #
     
