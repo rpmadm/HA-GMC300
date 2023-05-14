@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import struct
-#import serial
+import serial
 
 from homeassistant.components.sensor import (
     SensorDeviceClass,
