@@ -59,20 +59,19 @@ def get_cpm(cpm_to_usievert=None):
 
     v_device.write(str.encode('<GETCPM>>'))
  #   if v_device.in_waiting > 0:
-    while True:
-        if v_device.in_waiting > 0:
-            cpm = v_device.read(2)
+    if v_device.in_waiting > 0:
+        cpm = v_device.read(2)
 
-            gmc_logger.debug('INFO: Сырое значение cpm ' + cpm)
+        gmc_logger.debug('INFO: Сырое значение cpm ' + cpm)
 
-            if cpm == '' or len(cpm) < 2:
-                gmc_logger.debug('WARNING: Нет корректного значения cpm')
-                return ''
-            else:
-                value = struct.unpack(">H", cpm)[0]
-                gmc_logger.debug("INFO: Конечное значение value = " + str(value))
-                return value    
-        time.sleep(2)
+        if cpm == '' or len(cpm) < 2:
+            gmc_logger.debug('WARNING: Нет корректного значения cpm')
+            return ''
+        else:
+            value = struct.unpack(">H", cpm)[0]
+            gmc_logger.debug("INFO: Конечное значение value = " + str(value))
+            return value    
+#        time.sleep(2)
 #        unit_value = (value, 'CPM')
 #
 #        if cpm_to_usievert is not None:
