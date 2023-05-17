@@ -60,7 +60,7 @@ def get_cpm(cpm_to_usievert=None):
     v_device.write(str.encode('<GETCPM>>'))
  #   if v_device.in_waiting > 0:
     while True:
-        if v_device.in_waiting() > 0:
+        if v_device.in_waiting > 0:
             cpm = v_device.read(2)
 
             gmc_logger.debug('INFO: Сырое значение cpm ' + cpm)
