@@ -45,22 +45,23 @@ def get_cpm(cpm_to_usievert=None):
         return -1
 
     v_device.write(str.encode('<GETCPM>>'))
-    cpm = v_device.read(2)
+    if v_device.in_waiting > 0:
+        cpm = v_device.read(2)
 
-    if cpm == '' or len(cpm) < 2:
-        print('WARNING: no valid cpm received')
-        return ''
+        if cpm == '' or len(cpm) < 2:
+            print('WARNING: no valid cpm received')
+            return ''
 
-    value = struct.unpack(">H", cpm)[0]
+        value = struct.unpack(">H", cpm)[0]
+        unit_value = (value, 'CPM')
 
-    unit_value = (value, 'CPM')
-    if cpm_to_usievert is not None:
-        unit_value = convert_cpm_to_usievert(value, 'CPM', cpm_to_usievert)
+        if cpm_to_usievert is not None:
+            unit_value = convert_cpm_to_usievert(value, 'CPM', cpm_to_usievert)
 
-    if unit_value[1] == 'uSv/h':
-        return '{:.4f} {:s}'.format(unit_value[0], unit_value[1])
-    else:
-        return '{:d} {:s}'.format(unit_value[0], unit_value[1])
+        if unit_value[1] == 'uSv/h':
+            return '{:.4f} {:s}'.format(unit_value[0], unit_value[1])
+        else:
+            return '{:d} {:s}'.format(unit_value[0], unit_value[1])
 
 
 
