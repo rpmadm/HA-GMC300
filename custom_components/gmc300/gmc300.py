@@ -13,11 +13,16 @@ v_device_opened = False
 def open_device(port = None, baud_rate = 115200):
     global v_device, v_device_opened
 
+    gmc_logger.debug("INFO: Вход в процедуру подключения")
+
     if port is None or port == '':
         port = const.DEFAULT_PORT
 
+    gmc_logger.debug("INFO: Выбран порт " + port)
+
     try:
         v_device = serial.Serial(port, baudrate=baud_rate, timeout=1.0)
+        gmc_logger.debug("INFO: Подключено устройство")
     except serial.serialutil.SerialException:
         gmc_logger.debug("ERROR: Не найдено устройство")
         return -1
