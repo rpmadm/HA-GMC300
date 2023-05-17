@@ -29,7 +29,7 @@ def open_device(port = None, baud_rate = 115200):
 def clear_port():
     # close any pending previous command
     if v_device_opened: 
-        v_device.write(">>")
+        v_device.write(str.encode(">>"))
 
         # get rid off all buffered data still in the queue
         while True:
@@ -44,7 +44,7 @@ def get_cpm(cpm_to_usievert=None):
         print('ERROR: no device connected')
         return -1
 
-    v_device.write('<GETCPM>>')
+    v_device.write(str.encode('<GETCPM>>'))
     cpm = v_device.read(2)
 
     if cpm == '' or len(cpm) < 2:
