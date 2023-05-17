@@ -47,12 +47,13 @@ class GMCSensor(SensorEntity):
 
     async def update(self):
     #    self._attr_native_value = self._attr_native_value + 1
-        r2 = self._attr_native_value
+        r2 = 0 #self._attr_native_value
         s = serial.Serial("/dev/ttyUSB-geiger", 57600)
         s.write(str.encode("<GETCPM>>"))
         if s.inWaiting() > 0:
            r = s.read(2)
            r2 = struct.unpack('>H', r)[0]
-        return r2
+           self._attr_native_value = r2
+        #return r2
     #
     
