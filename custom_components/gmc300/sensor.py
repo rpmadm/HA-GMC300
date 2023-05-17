@@ -1,8 +1,9 @@
 from __future__ import annotations
 
-import sys
 import struct
-import serial
+#import serial
+from . import const
+from . import gmc300
 
 from homeassistant.components.sensor import (
     SensorDeviceClass,
@@ -13,8 +14,6 @@ from homeassistant.const import TEMP_CELSIUS
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.typing import ConfigType, DiscoveryInfoType
-
-print(sys.path)
 
 def setup_platform(
     hass: HomeAssistant,
@@ -34,7 +33,8 @@ class GMCSensor(SensorEntity):
     _attr_state_class = SensorStateClass.MEASUREMENT
     _attr_native_value = 245
 
-    #def __init__(self):
+    def __init__(self):
+        open_device(port = None, baud_rate = 115200)
     #    self._is_on = False
     #    self._attr_device_info = ...  # For automatic device registration
     #    self._attr_unique_id = ...
