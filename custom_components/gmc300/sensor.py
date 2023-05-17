@@ -47,6 +47,7 @@ class GMCSensor(SensorEntity):
 
     def update(self):
     #    self._attr_native_value = self._attr_native_value + 1
+        r2 = none 
         s = serial.Serial("/dev/ttyUSB-geiger", 57600)
         s.write(str.encode("<GETCPM>>"))
         if s.inWaiting() > 0:
