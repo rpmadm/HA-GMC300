@@ -1,4 +1,3 @@
-import const
 import serial
 import struct
 
