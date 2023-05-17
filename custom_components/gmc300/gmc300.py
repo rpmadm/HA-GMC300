@@ -4,6 +4,8 @@ import logging
 
 from . import const
 
+
+
 v_device = None
 v_device_opened = False
 
