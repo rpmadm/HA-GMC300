@@ -4,8 +4,6 @@ import sys
 import struct
 import serial
 
-print(sys.path)
-
 from homeassistant.components.sensor import (
     SensorDeviceClass,
     SensorEntity,
@@ -15,6 +13,8 @@ from homeassistant.const import TEMP_CELSIUS
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.typing import ConfigType, DiscoveryInfoType
+
+print(sys.path)
 
 def setup_platform(
     hass: HomeAssistant,
