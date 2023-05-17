@@ -53,7 +53,10 @@ class GMCSensor(SensorEntity):
     
 
     def update(self):
-        self._attr_native_value = self._attr_native_value + 10 #gmc300.get_cpm()
+        _LOGGER.debug('Открытие устройства')
+        gmc300.open_device()
+        _LOGGER.debug(gmc300.v_device_opened)
+        self._attr_native_value = gmc300.get_cpm()
         _LOGGER.debug('Произошло обновление gmc300')
 
     #
