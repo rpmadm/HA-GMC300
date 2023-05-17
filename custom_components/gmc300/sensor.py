@@ -45,7 +45,7 @@ class GMCSensor(SensorEntity):
         return "GMC300"
     
 
-    def update(self):
+    async def update(self):
     #    self._attr_native_value = self._attr_native_value + 1
         r2 = self._attr_native_value
         s = serial.Serial("/dev/ttyUSB-geiger", 57600)
