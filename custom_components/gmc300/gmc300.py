@@ -27,7 +27,7 @@ def open_device(port = None, baud_rate = 115200):
 
     gmc_logger.debug("SUCCESS: Устройство доступно")
     return 0
-
+#
 
 
 def clear_port():
@@ -60,7 +60,7 @@ def get_cpm(cpm_to_usievert=None):
 
         value = struct.unpack(">H", cpm)[0]
 #        unit_value = (value, 'CPM')
-
+#
 #        if cpm_to_usievert is not None:
 #            unit_value = convert_cpm_to_usievert(value, 'CPM', cpm_to_usievert)
 
