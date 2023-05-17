@@ -62,6 +62,8 @@ def get_cpm(cpm_to_usievert=None):
     if v_device.inWaiting() > 0:
         cpm = v_device.read(2)
 
+        gmc_logger.debug('INFO: Сырое значение cpm ' + cpm)
+
         if cpm == '' or len(cpm) < 2:
             gmc_logger.debug('WARNING: Нет корректного значения cpm')
             return ''
