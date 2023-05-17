@@ -51,19 +51,20 @@ def clear_port():
 def get_cpm(cpm_to_usievert=None):
     value = 0
     
+    gmc_logger.debug("INFO: Начальное значение value = " + str(value))
     if not v_device_opened:
         gmc_logger.debug("ERROR: Нет подключения к устройству")
         return -1
 
     v_device.write(str.encode('<GETCPM>>'))
-    if v_device.in_waiting > 0:
-        cpm = v_device.read(2)
+ #   if v_device.in_waiting > 0:
+    cpm = v_device.read(2)
 
-        if cpm == '' or len(cpm) < 2:
-            gmc_logger.debug('WARNING: Нет корректного значения cpm')
-            return ''
+    if cpm == '' or len(cpm) < 2:
+        gmc_logger.debug('WARNING: Нет корректного значения cpm')
+        return ''
 
-        value = struct.unpack(">H", cpm)[0]
+    value = struct.unpack(">H", cpm)[0]
 #        unit_value = (value, 'CPM')
 #
 #        if cpm_to_usievert is not None:
@@ -73,6 +74,7 @@ def get_cpm(cpm_to_usievert=None):
 #            return '{:.4f} {:s}'.format(unit_value[0], unit_value[1])
 #        else:
 #            return '{:d} {:s}'.format(unit_value[0], unit_value[1])
+    gmc_logger.debug("INFO: Конечное значение value = " + str(value))
     return value    
 
 
