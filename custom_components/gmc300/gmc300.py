@@ -2,6 +2,8 @@ import const
 import serial
 import struct
 
+from . import const
+
 v_device = None
 v_device_opened = False
 
@@ -9,12 +11,12 @@ def open_device(port = None, baud_rate = 115200):
     global v_device, v_device_opened
 
     if port is None or port == '':
-        port = DEFAULT_PORT
+        port = const.DEFAULT_PORT
 
     try:
         v_device = serial.Serial(port, baudrate=baud_rate, timeout=1.0)
     except serial.serialutil.SerialException:
-        print("ERROR: No device found (use the '-p /dev/ttyUSB0' option and provide the correct port, or install the udev rule as described in the INSTALL file)")
+        print("ERROR: No device found")
         return -1
 
     v_device_opened = True

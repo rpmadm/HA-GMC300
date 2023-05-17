@@ -1,3 +1,3 @@
-DEFAULT_PORT = "/dev/ttUSB-geiger"
+DEFAULT_PORT = '/dev/ttyUSB-geiger'
 
 

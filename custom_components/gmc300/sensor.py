@@ -34,7 +34,7 @@ class GMCSensor(SensorEntity):
     _attr_native_value = 245
 
     def __init__(self):
-        open_device(port = None, baud_rate = 115200)
+        gmc300.open_device()
     #    self._is_on = False
     #    self._attr_device_info = ...  # For automatic device registration
     #    self._attr_unique_id = ...
@@ -46,14 +46,7 @@ class GMCSensor(SensorEntity):
     
 
     async def update(self):
-    #    self._attr_native_value = self._attr_native_value + 1
-        r2 = 0 #self._attr_native_value
-        s = serial.Serial("/dev/ttyUSB-geiger", 57600)
-        s.write(str.encode("<GETCPM>>"))
-        if s.inWaiting() > 0:
-           r = s.read(2)
-           r2 = struct.unpack('>H', r)[0]
-           self._attr_native_value = r2
-        #return r2
+        self._attr_native_value = gmc300.get_cpm()
+
     #
     
