@@ -4,7 +4,8 @@ import logging
 
 from . import const
 
-
+gmc_logger = logging.getLogger(__name__)
+gmc_logger.setLevel(logging.DEBUG)
 
 v_device = None
 v_device_opened = False
@@ -18,12 +19,13 @@ def open_device(port = None, baud_rate = 115200):
     try:
         v_device = serial.Serial(port, baudrate=baud_rate, timeout=1.0)
     except serial.serialutil.SerialException:
-        print("ERROR: No device found")
+        gmc_logger.debug("ERROR: Не найдено устройство")
         return -1
 
     v_device_opened = True
     clear_port()
 
+    gmc_logger.debug("SUCCESS: Устройство доступно")
     return 0
 
 
@@ -42,8 +44,10 @@ def clear_port():
 
 
 def get_cpm(cpm_to_usievert=None):
+    value = 0
+    
     if not v_device_opened:
-        print('ERROR: no device connected')
+        gmc_logger.debug("ERROR: Нет подключения к устройству")
         return -1
 
     v_device.write(str.encode('<GETCPM>>'))
@@ -51,7 +55,7 @@ def get_cpm(cpm_to_usievert=None):
         cpm = v_device.read(2)
 
         if cpm == '' or len(cpm) < 2:
-            print('WARNING: no valid cpm received')
+            gmc_logger.debug('WARNING: Нет корректного значения cpm')
             return ''
 
         value = struct.unpack(">H", cpm)[0]

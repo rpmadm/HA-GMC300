@@ -26,11 +26,12 @@ def setup_platform(
     add_entities: AddEntitiesCallback,
     discovery_info: DiscoveryInfoType | None = None
 ) -> None:
+    ret = 0
     """Set up the sensor platform."""
     add_entities([GMCSensor()])
     _LOGGER.debug('Открытие устройства')
-    gmc300.open_device()
-    _LOGGER.debug('Статус открытия устройства ' + gmc300.v_device_opened)
+    ret = gmc300.open_device()
+    _LOGGER.debug('Статус открытия устройства ' + ret)
 
 
 class GMCSensor(SensorEntity):
@@ -56,6 +57,7 @@ class GMCSensor(SensorEntity):
     
 
     def update(self):
+        value_cpm = 0
         value_cpm = gmc300.get_cpm() 
         self._attr_native_value = value_cpm
         _LOGGER.debug('Произошло обновление gmc300' + value_cpm)
