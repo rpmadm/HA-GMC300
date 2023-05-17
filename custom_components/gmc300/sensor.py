@@ -52,7 +52,6 @@ class GMCSensor(SensorEntity):
         if s.inWaiting() > 0:
            r = s.read(2)
            r2 = struct.unpack('>H', r)[0]
-        self._attr_native_value = r2
         return r2
     #
     
