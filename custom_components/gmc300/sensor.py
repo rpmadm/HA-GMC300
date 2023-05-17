@@ -15,6 +15,11 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.typing import ConfigType, DiscoveryInfoType
 
+import logging
+_LOGGER = logging.getLogger(__name__)
+_LOGGER.setLevel(logging.DEBUG)
+
+
 def setup_platform(
     hass: HomeAssistant,
     config: ConfigType,
@@ -47,6 +52,7 @@ class GMCSensor(SensorEntity):
 
     def update(self):
         self._attr_native_value = gmc300.get_cpm()
+        _LOGGER.debug('Произошло обновление gmc300')
 
     #
     

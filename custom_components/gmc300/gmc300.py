@@ -1,5 +1,6 @@
 import serial
 import struct
+import logging
 
 from . import const
 
