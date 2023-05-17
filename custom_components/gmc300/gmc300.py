@@ -28,7 +28,7 @@ def open_device(port = None, baud_rate = 115200):
 
 def clear_port():
     # close any pending previous command
-    if v_device_opened 
+    if v_device_opened: 
         v_device.write(">>")
 
         # get rid off all buffered data still in the queue
