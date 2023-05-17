@@ -31,7 +31,7 @@ def setup_platform(
     add_entities([GMCSensor()])
     _LOGGER.debug('Открытие устройства')
     ret = gmc300.open_device()
-    _LOGGER.debug('Статус открытия устройства ' + ret)
+    _LOGGER.debug('Статус открытия устройства ' + str.encode(ret))
 
 
 class GMCSensor(SensorEntity):
@@ -60,7 +60,7 @@ class GMCSensor(SensorEntity):
         value_cpm = 0
         value_cpm = gmc300.get_cpm() 
         self._attr_native_value = value_cpm
-        _LOGGER.debug('Произошло обновление gmc300' + value_cpm)
+        _LOGGER.debug('Произошло обновление gmc300' + str.encode(value_cpm))
 
     #
     
