@@ -1,6 +1,7 @@
 import serial
 import struct
 import logging
+import time
 
 from . import const
 
@@ -58,13 +59,15 @@ def get_cpm(cpm_to_usievert=None):
 
     v_device.write(str.encode('<GETCPM>>'))
  #   if v_device.in_waiting > 0:
-    cpm = v_device.read(2)
+    if v_device.inWaiting() > 0:
+        cpm = v_device.read(2)
 
-    if cpm == '' or len(cpm) < 2:
-        gmc_logger.debug('WARNING: Нет корректного значения cpm')
-        return ''
+        if cpm == '' or len(cpm) < 2:
+            gmc_logger.debug('WARNING: Нет корректного значения cpm')
+            return ''
 
-    value = struct.unpack(">H", cpm)[0]
+        value = struct.unpack(">H", cpm)[0]
+        time.sleep(2)
 #        unit_value = (value, 'CPM')
 #
 #        if cpm_to_usievert is not None:
