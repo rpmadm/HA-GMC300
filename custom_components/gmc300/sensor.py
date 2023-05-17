@@ -10,7 +10,7 @@ from homeassistant.components.sensor import (
     SensorEntity,
     SensorStateClass,
 )
-from homeassistant.const import TEMP_CELSIUS
+#from homeassistant.const import TEMP_CELSIUS
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.typing import ConfigType, DiscoveryInfoType
@@ -38,10 +38,10 @@ class GMCSensor(SensorEntity):
     _attr_state_class = SensorStateClass.MEASUREMENT
     _attr_native_value = 245
 
-    def __init__(self):
-        _LOGGER.debug('Открытие устройства')
-        gmc300.open_device()
-        _LOGGER.debug(gmc300.v_device_opened)
+    #def __init__(self):
+    #    _LOGGER.debug('Открытие устройства')
+    #    gmc300.open_device()
+    #    _LOGGER.debug(gmc300.v_device_opened)
     #    self._is_on = False
     #    self._attr_device_info = ...  # For automatic device registration
     #    self._attr_unique_id = ...
