@@ -45,7 +45,7 @@ class GMCSensor(SensorEntity):
         return "GMC300"
     
 
-    async def update(self):
+    def update(self):
         self._attr_native_value = gmc300.get_cpm()
 
     #
