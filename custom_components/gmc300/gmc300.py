@@ -53,16 +53,16 @@ def get_cpm(cpm_to_usievert=None):
             return ''
 
         value = struct.unpack(">H", cpm)[0]
-        unit_value = (value, 'CPM')
+#        unit_value = (value, 'CPM')
 
-        if cpm_to_usievert is not None:
-            unit_value = convert_cpm_to_usievert(value, 'CPM', cpm_to_usievert)
+#        if cpm_to_usievert is not None:
+#            unit_value = convert_cpm_to_usievert(value, 'CPM', cpm_to_usievert)
 
-        if unit_value[1] == 'uSv/h':
-            return '{:.4f} {:s}'.format(unit_value[0], unit_value[1])
-        else:
-            return '{:d} {:s}'.format(unit_value[0], unit_value[1])
-
+#        if unit_value[1] == 'uSv/h':
+#            return '{:.4f} {:s}'.format(unit_value[0], unit_value[1])
+#        else:
+#            return '{:d} {:s}'.format(unit_value[0], unit_value[1])
+    return value    
 
 
 def convert_cpm_to_usievert(cpm, unit, cpm_to_usievert):
