@@ -61,8 +61,6 @@ def get_cpm(cpm_to_usievert=None):
 
     cpm = v_device.read(2)
 
-    gmc_logger.debug('INFO: Сырое значение cpm ' + cpm)
-
     value = struct.unpack(">H", cpm)[0]
 
     return value
