@@ -59,34 +59,30 @@ def get_cpm(cpm_to_usievert=None):
 
     v_device.write(str.encode('<GETCPM>>'))
 
-    cpm = v_device.read(2)
+    if v_device.in_waiting > 0:
+        cpm = v_device.read(2)
 
-    value = struct.unpack(">H", cpm)[0]
+        gmc_logger.debug('INFO: Сырое значение cpm ' + cpm)
 
-    return value
+        if cpm == '' or len(cpm) < 2:
+            gmc_logger.debug('WARNING: Нет корректного значения cpm')
+            return -100
+        else:
+            value = struct.unpack(">H", cpm)[0]
+            gmc_logger.debug("INFO: Конечное значение value = " + str(value))
+            return value 
+    
+    
+    #    time.sleep(2)
+    #    unit_value = (value, 'CPM')
 
-#    if v_device.in_waiting > 0:
-#        cpm = v_device.read(2)
+    #    if cpm_to_usievert is not None:
+    #        unit_value = convert_cpm_to_usievert(value, 'CPM', cpm_to_usievert)
 
-#        gmc_logger.debug('INFO: Сырое значение cpm ' + cpm)
-
-#        if cpm == '' or len(cpm) < 2:
-#            gmc_logger.debug('WARNING: Нет корректного значения cpm')
-#            return ''
-#        else:
-#            value = struct.unpack(">H", cpm)[0]
-#            gmc_logger.debug("INFO: Конечное значение value = " + str(value))
-#            return value 
-#        time.sleep(2)
-#        unit_value = (value, 'CPM')
-#
-#        if cpm_to_usievert is not None:
-#            unit_value = convert_cpm_to_usievert(value, 'CPM', cpm_to_usievert)
-
-#        if unit_value[1] == 'uSv/h':
-#            return '{:.4f} {:s}'.format(unit_value[0], unit_value[1])
-#        else:
-#            return '{:d} {:s}'.format(unit_value[0], unit_value[1])
+    #    if unit_value[1] == 'uSv/h':
+    #        return '{:.4f} {:s}'.format(unit_value[0], unit_value[1])
+    #    else:
+    #        return '{:d} {:s}'.format(unit_value[0], unit_value[1])
     
 
 
