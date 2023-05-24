@@ -56,7 +56,7 @@ class GMCSensor(SensorEntity):
         return "GMC300"
     
     @property
-    def version(self)
+    def version(self):
         return gmc300.get_version()
 
     def update(self):
