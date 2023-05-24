@@ -11,7 +11,7 @@ gmc_logger.setLevel(logging.DEBUG)
 v_device = None
 v_device_opened = False
 
-def open_device(port = None, baud_rate = 115200):
+def open_device(port = None, baud_rate = 57600):
     global v_device, v_device_opened
 
     gmc_logger.debug("INFO: Вход в процедуру подключения")
