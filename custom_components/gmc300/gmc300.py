@@ -102,7 +102,7 @@ def convert_cpm_to_usievert(cpm, unit, cpm_to_usievert):
         return cpm, unit
 
 
-def get_version()
+def get_version():
     global v_device
     
     v_device.write(str.encode("<GETVER>>"))
