@@ -106,6 +106,8 @@ def convert_cpm_to_usievert(cpm, unit, cpm_to_usievert):
 
 def get_version():
     global v_device
+
+    v_version = "Неизвестно"
     
     v_device.write(str.encode("<GETVER>>"))
     v_version = v_device.read(14)
