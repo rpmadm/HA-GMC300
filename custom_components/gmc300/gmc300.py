@@ -52,6 +52,8 @@ def clear_port():
 def get_cpm():
     ret_value = 0
     
+    get_version()
+
     gmc_logger.debug("INFO: Начальное значение value = " + str(ret_value))
     if not v_device_opened:
         gmc_logger.debug("ERROR: Нет подключения к устройству")
@@ -107,5 +109,7 @@ def get_version():
     
     v_device.write(str.encode("<GETVER>>"))
     v_version = v_device.read(14)
+
+    gmc_logger.debug("INFO: Версия ПО:" + str(v_version))
     
     return v_version
