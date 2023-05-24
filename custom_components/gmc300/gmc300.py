@@ -100,3 +100,12 @@ def convert_cpm_to_usievert(cpm, unit, cpm_to_usievert):
         return cpm * cpm_to_usievert[1] / cpm_to_usievert[0] / 60, 'uSv/h'
     else:
         return cpm, unit
+
+
+def get_version()
+    global v_device
+    
+    v_device.write(str.encode("<GETVER>>"))
+    v_version = v_device.read(14)
+    
+    return v_version

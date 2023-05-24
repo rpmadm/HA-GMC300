@@ -55,6 +55,9 @@ class GMCSensor(SensorEntity):
         """Name of the entity."""
         return "GMC300"
     
+    @property
+    def version(self)
+        return gmc300.get_version()
 
     def update(self):
         value_cpm = 0
