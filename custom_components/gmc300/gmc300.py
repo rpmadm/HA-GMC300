@@ -11,7 +11,7 @@ gmc_logger.setLevel(logging.DEBUG)
 v_device = None
 v_device_opened = False
 
-def open_device(port = None, baud_rate = 57600):
+def open_device(port = None, baud_rate = 115200):
     global v_device, v_device_opened
 
     gmc_logger.debug("INFO: Вход в процедуру подключения")
@@ -51,8 +51,10 @@ def clear_port():
 
 def get_cpm():
     ret_value = 0
+    ret_vers = "Unknown Version"
     
-    get_version()
+    ret_vers = get_version()
+    gmc_logger.debug("INFO: Версия внутри get_cpm = " + str(ret_vers))
 
     gmc_logger.debug("INFO: Начальное значение value = " + str(ret_value))
     if not v_device_opened:
