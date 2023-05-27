@@ -63,7 +63,7 @@ class GMCSensor(SensorEntity):
         value_cpm = 0
         value_cpm = gmc300.get_cpm() 
         self._attr_native_value = value_cpm
-        _LOGGER.debug('Произошло обновление gmc300' + str(value_cpm))
-
+        _LOGGER.debug('Произошло обновление gmc300 = ' + str(value_cpm))
+        return value_cpm
     #
     

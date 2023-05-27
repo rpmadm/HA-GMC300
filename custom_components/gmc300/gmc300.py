@@ -50,7 +50,7 @@ def clear_port():
 
 
 def get_cpm():
-    ret_value = 0
+    ret_value = None
     ret_vers = "Unknown Version"
     
     ret_vers = get_version()
@@ -66,17 +66,13 @@ def get_cpm():
     if v_device.in_waiting > 0:
         cpm = v_device.read(2)
 
-        #gmc_logger.debug('INFO: Сырое значение cpm ' + cpm)
-
-#        if cpm == '' or len(cpm) < 2:
-#            gmc_logger.debug('WARNING: Нет корректного значения cpm')
-#            return -100
-#        else:
-            
-        ret_value = struct.unpack(">H", cpm)[0]
-        gmc_logger.debug("INFO: Конечное значение value = " + str(ret_value))
-        
-        return ret_value 
+        if cpm == '' or len(cpm) < 2:
+            gmc_logger.debug('WARNING: Нет корректного значения cpm')
+            return -100
+        else:
+            ret_value = struct.unpack(">H", cpm)[0]
+            gmc_logger.debug("INFO: Конечное значение value = " + str(ret_value))
+            return ret_value 
     
     
     #    time.sleep(2)
